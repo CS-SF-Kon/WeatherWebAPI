@@ -364,6 +364,6 @@ FodyWeavers.xsd
 
 # Database
 *.db
-
-# InternalNlog
+*.db-shm
+*.db-wal
 internal-nlog.txt
