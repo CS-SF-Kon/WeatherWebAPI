@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace WeatherWebAPI.Contracts.Models;
 
 /// <summary>
-/// WeatherAPI response model
+/// Our API response model
 /// </summary>
 public class WeatherResponse
 {

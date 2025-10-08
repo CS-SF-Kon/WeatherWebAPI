@@ -27,7 +27,7 @@ public class WeatherService : IWeatherService
     /// <summary>
     /// Implementarion of weather information method.
     /// Accepts name of city.
-    /// Has temporary stopper.
+    /// Now has real WeatherAPI retriever.
     /// </summary>
     /// <param name="city"></param>
     /// <returns>WeatherResponse model</returns>

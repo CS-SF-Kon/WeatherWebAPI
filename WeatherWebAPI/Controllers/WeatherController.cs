@@ -14,10 +14,13 @@ namespace WeatherWebAPI.Controllers;
 public class WeatherController : ControllerBase
 {
     private readonly IWeatherService _weatherService;
+    private readonly ILogger<WeatherController> _logger;
 
-    public WeatherController(IWeatherService weatherService)
+
+    public WeatherController(IWeatherService weatherService, ILogger<WeatherController> logger)
     {
         _weatherService = weatherService;
+        _logger = logger;
     }
 
     /// <summary>
@@ -29,6 +32,10 @@ public class WeatherController : ControllerBase
     [HttpGet("{city}")]
     public async Task<ActionResult<WeatherResponse>> GetWeather(string city)
     {
+        var startTime = DateTime.UtcNow;
+
+        _logger.LogInformation("Getting weather for city: {City}", city);
+
         var request = new CityRequest // City name validation via model attributes
         {
             City = city
@@ -49,6 +56,7 @@ public class WeatherController : ControllerBase
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Error getting weather for city: {City}", city);
             return BadRequest(new { error = ex.Message }); // another errors
         }
     }

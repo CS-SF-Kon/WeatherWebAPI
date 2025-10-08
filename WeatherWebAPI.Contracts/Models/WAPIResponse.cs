@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace WeatherWebAPI.Contracts.Models;
 
+/// <summary>
+/// WeatherAPI response structure
+/// </summary>
 public class WAPIResponse
 {
     [JsonPropertyName("location")]
