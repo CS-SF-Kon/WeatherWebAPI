@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WeatherWebAPI.Services.Interfaces;
+﻿namespace WeatherWebAPI.Services.Interfaces;
 
 /// <summary>
 /// Logging info collection service

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WeatherWebAPI.Contracts.Models;
+﻿namespace WeatherWebAPI.Contracts.Models;
 
 /// <summary>
 /// Our API response model
@@ -14,7 +8,7 @@ public class WeatherResponse
     /// <summary>
     /// City name
     /// </summary>
-    public string City {  get; set; }
+    public string? City {  get; set; }
 
     /// <summary>
     /// Current temperature
@@ -24,7 +18,7 @@ public class WeatherResponse
     /// <summary>
     /// Weather description
     /// </summary>
-    public string Description { get; set; }
+    public string? Description { get; set; }
 
     /// <summary>
     /// Air humidity

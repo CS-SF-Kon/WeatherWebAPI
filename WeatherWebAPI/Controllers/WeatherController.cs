@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using WeatherWebAPI.Contracts.Models;
 using WeatherWebAPI.Services.Interfaces;
@@ -11,17 +10,10 @@ namespace WeatherWebAPI.Controllers;
 /// </summary>
 [Route("[controller]")]
 [ApiController]
-public class WeatherController : ControllerBase
+public class WeatherController(IWeatherService weatherService, ILogger<WeatherController> logger) : ControllerBase
 {
-    private readonly IWeatherService _weatherService;
-    private readonly ILogger<WeatherController> _logger;
-
-
-    public WeatherController(IWeatherService weatherService, ILogger<WeatherController> logger)
-    {
-        _weatherService = weatherService;
-        _logger = logger;
-    }
+    private readonly IWeatherService _weatherService = weatherService;
+    private readonly ILogger<WeatherController> _logger = logger;
 
     /// <summary>
     /// Main answer method.

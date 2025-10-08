@@ -1,28 +1,15 @@
 ﻿using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using WeatherWebAPI.Contracts.Models;
 using WeatherWebAPI.Services.Interfaces;
 
 namespace WeatherWebAPI.Services.Implementations;
 
-public class WeatherService : IWeatherService
+public class WeatherService(HttpClient httpClient, IOptions<WAPISettings> settings) : IWeatherService
 {
-    private readonly HttpClient _httpClient;
-    private readonly IOptions<WAPISettings> _settings;
-
-
-    public WeatherService(HttpClient httpClient, IOptions<WAPISettings> settings)
-    {
-        _httpClient = httpClient;
-        _settings = settings;
-    }
+    private readonly HttpClient _httpClient = httpClient;
+    private readonly IOptions<WAPISettings> _settings = settings;
 
     /// <summary>
     /// Implementarion of weather information method.
@@ -37,20 +24,22 @@ public class WeatherService : IWeatherService
 
         var response = await _httpClient.GetAsync(url);
 
-        if (!response.IsSuccessStatusCode)
-        {
-            var errorContent = await response.Content.ReadAsStringAsync();
-
-            throw new Exception($"Weather service error: {response.StatusCode}");
-        }
-
-        var content = await response.Content.ReadAsStringAsync();
-        var weatherData = JsonSerializer.Deserialize<WAPIResponse>(content, new JsonSerializerOptions
+        var options = new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true,
             NumberHandling = JsonNumberHandling.AllowReadingFromString |
                            JsonNumberHandling.AllowNamedFloatingPointLiterals
-        });
+        };
+
+        if (!response.IsSuccessStatusCode)
+        {
+            var errorContent = await response.Content.ReadAsStringAsync();
+
+            throw new Exception($"Weather service error: {response.StatusCode} - {errorContent}");
+        }
+
+        var content = await response.Content.ReadAsStringAsync();
+        var weatherData = JsonSerializer.Deserialize<WAPIResponse>(content, options);
 
         return new WeatherResponse { 
             City= weatherData.Location.Name,

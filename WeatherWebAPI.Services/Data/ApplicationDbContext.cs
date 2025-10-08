@@ -1,9 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WeatherWebAPI.Contracts.Models;
 
 namespace WeatherWebAPI.Services.Data;
@@ -11,12 +6,8 @@ namespace WeatherWebAPI.Services.Data;
 /// <summary>
 /// Database context
 /// </summary>
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
-    {
-    }
-
     public DbSet<LogEntry> Logs { get; set; } // table name
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

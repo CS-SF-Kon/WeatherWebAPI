@@ -1,25 +1,14 @@
 ﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WeatherWebAPI.Services.Data;
 using WeatherWebAPI.Services.Interfaces;
 using WeatherWebAPI.Contracts.Models;
 
 namespace WeatherWebAPI.Services.Implementations;
 
-public class LoggingService : ILoggingService
+public class LoggingService(ApplicationDbContext context, ILogger<LoggingService> logger) : ILoggingService
 {
-    private readonly ApplicationDbContext _context;
-    private readonly ILogger<LoggingService> _logger;
-
-    public LoggingService(ApplicationDbContext context, ILogger<LoggingService> logger)
-    {
-        _context = context;
-        _logger = logger;
-    }
+    private readonly ApplicationDbContext _context = context;
+    private readonly ILogger<LoggingService> _logger = logger;
 
     /// <summary>
     /// Implementation of logging information collector

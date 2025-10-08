@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WeatherWebAPI.Contracts.Models;
+﻿namespace WeatherWebAPI.Contracts.Models;
 
 /// <summary>
 /// WeatherAPI settings model

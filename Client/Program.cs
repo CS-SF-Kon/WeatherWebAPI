@@ -6,7 +6,7 @@ namespace Client;
 
 internal class Program
 {
-    private static readonly HttpClient httpClient = new HttpClient();
+    private static readonly HttpClient httpClient = new();
 
     static async Task Main(string[] args)
     {
@@ -17,8 +17,6 @@ internal class Program
 
         var apiSettings = configuration.GetSection("ApiSettings");
         var baseUrl = apiSettings["BaseUrl"]; // it makes the API address reconfiguration flexible
-        var timeoutSeconds = int.Parse(apiSettings["TimeoutSeconds"] ?? "30");
-        var maxRetries = int.Parse(apiSettings["MaxRetries"] ?? "3");
 
         Console.WriteLine("=== Weather App ===");
         Console.WriteLine($"Using API: {baseUrl}"); // to make sure the API address is correct
@@ -32,7 +30,7 @@ internal class Program
             if (string.IsNullOrWhiteSpace(city)) // continue
                 continue;
 
-            if (city.ToLower() == "quit") // quit
+            if (city.Equals("quit", StringComparison.CurrentCultureIgnoreCase)) // quit
                 break;
 
             try
@@ -41,11 +39,13 @@ internal class Program
 
                 if (response.IsSuccessStatusCode) // if city name is valid
                 {
-                    var content = await response.Content.ReadAsStringAsync();
-                    var weather = JsonSerializer.Deserialize<WeatherResponse>(content, new JsonSerializerOptions
+                    var options = new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
-                    });
+                    };
+
+                    var content = await response.Content.ReadAsStringAsync();
+                    var weather = JsonSerializer.Deserialize<WeatherResponse>(content, options);
 
                     Console.WriteLine($"\nWeather in {weather.City}:");
                     Console.WriteLine($"Temperature: {weather.Temperature}°C");

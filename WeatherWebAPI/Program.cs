@@ -1,4 +1,3 @@
-
 using Microsoft.EntityFrameworkCore;
 using NLog.Web;
 using WeatherWebAPI.Contracts.Models;
