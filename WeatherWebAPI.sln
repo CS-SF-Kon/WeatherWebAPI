@@ -5,6 +5,12 @@ VisualStudioVersion = 17.14.36414.22 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherWebAPI", "WeatherWebAPI\WeatherWebAPI.csproj", "{F5D533A2-2A7B-4F53-B488-44151338356C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherWebAPI.Contracts", "WeatherWebAPI.Contracts\WeatherWebAPI.Contracts.csproj", "{D5179E13-9876-4B74-91EC-29EA45229CE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherWebAPI.Services", "WeatherWebAPI.Services\WeatherWebAPI.Services.csproj", "{2832ADB9-0041-4618-92E8-338B56560518}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{D94D8412-DCAC-4E9C-83CB-62E820D58601}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{F5D533A2-2A7B-4F53-B488-44151338356C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5D533A2-2A7B-4F53-B488-44151338356C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5D533A2-2A7B-4F53-B488-44151338356C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5179E13-9876-4B74-91EC-29EA45229CE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5179E13-9876-4B74-91EC-29EA45229CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5179E13-9876-4B74-91EC-29EA45229CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5179E13-9876-4B74-91EC-29EA45229CE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2832ADB9-0041-4618-92E8-338B56560518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2832ADB9-0041-4618-92E8-338B56560518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2832ADB9-0041-4618-92E8-338B56560518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2832ADB9-0041-4618-92E8-338B56560518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D94D8412-DCAC-4E9C-83CB-62E820D58601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94D8412-DCAC-4E9C-83CB-62E820D58601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94D8412-DCAC-4E9C-83CB-62E820D58601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94D8412-DCAC-4E9C-83CB-62E820D58601}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
