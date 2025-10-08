@@ -19,7 +19,7 @@ public class WeatherResponse
     /// <summary>
     /// Current temperature
     /// </summary>
-    public decimal Temperature { get; set; }
+    public double Temperature { get; set; }
 
     /// <summary>
     /// Weather description
@@ -29,10 +29,10 @@ public class WeatherResponse
     /// <summary>
     /// Air humidity
     /// </summary>
-    public double Humidity { get; set; }
+    public int Humidity { get; set; }
 
     /// <summary>
     /// Speed of wind
     /// </summary>
-    public float WindSpeed { get; set; }
+    public double WindSpeed { get; set; }
 }

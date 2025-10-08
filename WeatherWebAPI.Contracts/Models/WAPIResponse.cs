@@ -3,30 +3,43 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WeatherWebAPI.Contracts.Models;
 
 public class WAPIResponse
 {
+    [JsonPropertyName("location")]
     public Location Location { get; set; } = new();
+
+    [JsonPropertyName("current")]
     public Current Current { get; set; } = new();
 }
 
 public class Location
 {
+    [JsonPropertyName("name")]
     public string Name { get; set; } = string.Empty;
 }
 
 public class Current
 {
-    public decimal TempC { get; set; }
-    public double Humidity { get; set; }
-    public float WindKph { get; set; }
+    [JsonPropertyName("temp_c")]
+    public double TempC { get; set; }
+
+    [JsonPropertyName("humidity")]
+    public int Humidity { get; set; } // quite risky, but experience has shown that humidity is integer 
+
+    [JsonPropertyName("wind_kph")]
+    public double WindKph { get; set; }
+
+    [JsonPropertyName("condition")]
     public Condition Condition { get; set; } = new();
 }
 
 public class Condition
 {
+    [JsonPropertyName("text")]
     public string Text { get; set; } = string.Empty;
 }
